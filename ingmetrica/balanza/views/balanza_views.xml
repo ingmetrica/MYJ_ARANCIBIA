@@ -1,0 +1,47 @@
+<odoo>
+    <!-- Acción para abrir la vista de la lista de pesos -->
+    <record id="action_balanza" model="ir.actions.act_window">
+        <field name="name">Balanza</field>
+        <field name="res_model">balanza.model</field>
+        <field name="view_mode">tree,form</field>
+        <field name="groups_id" eval="[(6, 0, [ref('balanza.group_balanza_user')])]"/>  <!-- Asociado al grupo de Balanza -->
+    </record>
+
+    <!-- Menú raíz principal -->
+    <menuitem id="menu_balanza_root" name="Balanza" sequence="1" groups="balanza.group_balanza_user"/>
+
+    <!-- Submenú que abre la acción definida arriba -->
+    <menuitem id="menu_balanza" parent="menu_balanza_root" name="Modelos de Balanza" action="action_balanza" groups="balanza.group_balanza_user"/>
+
+    <!-- Vista de lista para el modelo de balanza -->
+    <record id="view_balanza_list" model="ir.ui.view">
+        <field name="name">balanza.model.list</field>
+        <field name="model">balanza.model</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="id" string="ID"/>
+                <field name="peso"/>
+                <field name="pos_id" string="Punto de Venta"/>
+            </tree>
+        </field>
+        <field name="groups_id" eval="[(6, 0, [ref('balanza.group_balanza_user')])]"/>
+    </record>
+
+    <!-- Vista de formulario para el modelo de balanza -->
+    <record id="view_balanza_form" model="ir.ui.view">
+        <field name="name">balanza.model.form</field>
+        <field name="model">balanza.model</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="id" readonly="1"/>
+                        <field name="peso"/>
+                        <field name="pos_id" widget="many2one"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+        <field name="groups_id" eval="[(6, 0, [ref('balanza.group_balanza_user')])]"/>
+    </record>
+</odoo>
