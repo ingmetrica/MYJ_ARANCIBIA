@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="CustomerFacingDisplayOrder"
+       t-inherit="point_of_sale.CustomerFacingDisplayOrder"
+       t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('pos-customer_products')]" position="replace">
+            <div class="pos-customer_products" name="Products list">
+                <div class="customer-weight-display" style="margin: 0.4rem;
+                                                    padding: 0.2rem 0.6rem;
+                                                    border: 2px solid #930061;
+                                                    border-radius: 4px;
+                                                    width: max-content;
+                                                    display: flex;
+                                                    align-items: center;
+                                                    text-wrap: nowrap;
+                                                    gap: 0.6rem;
+                                                    justify-content: center;">
+                    <img style="width:40px;" src="/odoo_pos_scale_integration/static/description/assets/icons/weight-scale.png"/>
+                    <t t-log="order.product_weight,'order in pos'"/>
+                    <t t-if="order.product_weight">
+                    <span class="display-weight" style="font-size: 27px; color: black;
+                    font-weight: bold;"><t t-out="order.product_weight"/>KG</span>
+                    </t>
+                    <t t-else="">
+                        <span class="display-weight" style="font-size: 27px; color: black;
+                    font-weight: bold;">0.00</span>
+                    </t>
+                </div>
+<!--                </t>-->
+                <t t-call="point_of_sale.CustomerFacingDisplayMainContainer"/>
+            </div>
+        </xpath>
+    </t>
+</templates>

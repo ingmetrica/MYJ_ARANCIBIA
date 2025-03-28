@@ -1,0 +1,8 @@
+<odoo>
+    <!-- Definición del grupo de usuarios para Balanza -->
+    <record id="group_balanza_user" model="res.groups">
+        <field name="name">Balanza User</field>
+        <!-- Eliminar category_id si no es necesario -->
+    </record>
+</odoo>
+

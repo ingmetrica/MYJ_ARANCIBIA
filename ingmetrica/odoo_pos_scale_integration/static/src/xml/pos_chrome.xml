@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="WeightScreen" owl="1">
+        <div  class="WeightScreenHeader" t-ref="root" style="margin: 0.4rem;
+                                    display: flex;
+                                    align-items: center;
+                                    border: 1px soild black;
+                                    border: 1px solid #dfdfdf;
+                                    padding: 0.2rem;
+                                    gap: 5px;
+                                    background-color: white;">
+            <span style="color:black; font-size: 1rem; padding: 0.2rem; font-weight: 600; width: 53px;">Peso :</span>
+            <span class="myInput" style="display: flex; align-items: center;">
+                <t t-if="state.product_weight">
+                    <t t-out="state.product_weight"/>
+                </t>
+                <t t-else="">
+                    0.00
+                </t>
+            </span>
+            <t t-if="state.product_weight">
+                <span class="myInput" style="display: flex; align-items: center;">KG</span>
+            </t>
+            <button id="myBtn" t-on-click="this.AddWeight" data-hotkey="w"
+                    style="box-shadow: none; outline: none; font-family: 'Lato';">
+                <img style="height: 21px;"
+                     src="/odoo_pos_scale_integration/static/description/assets/icons/enter.png"/>
+            </button>
+        </div>
+    </t>
+</templates>
+

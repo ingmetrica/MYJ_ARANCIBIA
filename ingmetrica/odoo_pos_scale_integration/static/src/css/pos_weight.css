@@ -1,0 +1,69 @@
+#myInput:focus {
+  box-shadow: none;
+  border: none;
+  font-family: "Lato", "Lucida Grande", Helvetica, Verdana, Arial;
+}
+
+#myInput:focus-visible {
+  box-shadow: none;
+  border: none;
+  outline: none;
+  font-family: "Lato", "Lucida Grande", Helvetica, Verdana, Arial;
+}
+
+#myBtn {
+    display: inline-block;
+    cursor: pointer;
+    padding: 3px 10px;
+    font-size: 11px;
+    border: 1px solid #E0E2E6;
+    color: #017e84;
+    background: #fff;
+}
+
+.myInput {
+    height: 99%;
+    border: none;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: #714b67;
+    max-width: min-content;
+
+    font-family: "Lato", "Lucida Grande", Helvetica, Verdana, Arial;
+}
+
+.weight-unit {
+    font-size: 30px;
+    font-weight: bold;
+    padding-right: 5px;
+    text-align: center;
+    color: #7a4066;
+    font-family: "Lato", "Lucida Grande", Helvetica, Verdana, Arial;
+}
+
+. display-weight {
+
+}
+
+.customer-weight-display {
+    margin: 0.4rem;
+    padding: 0.2rem 0.6rem;
+    border: 2px solid #930061;
+    border-radius: 4px;
+    width: max-content;
+    display: flex;
+    align-items: center;
+    text-wrap: nowrap;
+    gap: 0.6rem;
+    justify-content: center;
+}
+.hidden-input{
+    width: 0;
+    height: 0;
+    border: unset;
+}
+
+.hidden-input:focus {
+    border: unset;
+}
