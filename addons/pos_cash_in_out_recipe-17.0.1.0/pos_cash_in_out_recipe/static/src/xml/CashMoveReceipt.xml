@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="template" xml:space="preserve">
+    <t t-name="CashMoveReceipt" t-inherit="point_of_sale.CashMoveReceipt" t-inherit-mode="extension">
+        
+        <xpath expr="//div[hasclass('pos-receipt')]" position="replace">
+   
+            <div class="pos-receipt">
+                
+                <ReceiptHeader data="props.headerData" />
+                <div class="pos-receipt-center-align">
+                    <t t-esc="props.translatedType.toUpperCase()" />
+                </div>
+                <br/>
+                <div class="receipt-user">
+                   <b> Date:</b> <t t-esc="props.date"/><br />
+                </div>
+                
+                <div class="receipt-user">
+                    <b>Reason:</b> <t t-esc="props.reason || ''"/><br />
+                </div>
+
+                <div class="receipt-user">
+                    <b>Amount:</b> <t t-esc="props.formattedAmount || ''"/><br />
+                </div>
+               
+                <div style="margin-top:70px;text-align: center;">
+                    <p style="border-top: 2px dashed black;"></p>
+                    <b><span>Sign</span></b>
+                </div>
+            </div>
+        </xpath>
+    </t>
+</templates>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="pos_cash_in_out_recipe.CashInOutStatementReceipt">
+        <div class="pos-receipt">
+            <ReceiptHeader data="props.headerData" />
+
+            <table class="table">
+                <thead style="text-align: center;">
+                    <th >Date</th>
+                    <th >Reason</th>
+                    <th >Credit</th>
+                    <th >Debit</th>
+                </thead>
+                <tbody >
+                    
+                    <tr t-foreach="props.data.data" t-as="line" t-key="line_index" >
+                        <td><t t-esc="line.date"/></td>
+                        <td><t t-esc="line.reason"/></td>
+                        <td style="text-align: right;"><t t-esc="line.credit"/></td>
+                        <td style="text-align: right;"><t t-esc="line.debit"/></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center;border: none;"><b>Total</b></td>
+                        <td style="text-align: right;border: none;"><b><t t-esc="props.data.total_credit"/></b></td>
+                        <td style="text-align: right;border: none;"><b><t t-esc="props.data.total_debit"/></b></td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+            <div style="margin-top:60px;text-align: center;">
+                <p style="border-top: 2px dashed black;"></p>
+                <b><span>Sign</span></b>
+            </div>
+        </div>
+    </t>
+
+</templates>
