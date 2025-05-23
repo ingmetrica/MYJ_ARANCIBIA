@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>  
+    <template id="pos_cash_in_out_ticket_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.basic_layout">
+                   
+             
+              
+                    <div class="page" style="font-size: 24px;">
+                        <strong style="text-align: center;"><span style="text-align: left;">Cash In / Out Statement</span></strong><br/>
+                        <strong style="text-align: center;"><span ><t t-esc="o.company_id.name"/></span><br/></strong>
+                        <br/><br/>
+                        <table class="table">
+                            <thead style="text-align: center;">
+                                <th >Date</th>
+                                <th >Reason</th>
+                                <th >Credit</th>
+                                <th >Debit</th>
+                            </thead>
+                            <tbody >
+                                
+                                <tr t-foreach="o.get_cash_register(o.id)['data']" t-as="line" >
+                                    <td><t t-esc="line['date']"/></td>
+                                    <td><t t-esc="line['reason']"/></td>
+                                    <td style="text-align: right;"><t t-esc="line['credit']"/></td>
+                                    <td style="text-align: right;"><t t-esc="line['debit']"/></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="text-align: center;border: none;"><b>Total</b></td>
+                                    <td style="text-align: right;border: none;"><b><t t-esc="o.get_cash_register(o.id)['total_credit']"/></b></td>
+                                    <td style="text-align: right;border: none;"><b><t t-esc="o.get_cash_register(o.id)['total_debit']"/></b></td>
+                                </tr>
+                            
+                            </tbody>
+                        </table>
+                        <div style="margin-top:80px;text-align: center;">
+                            <p style="border-top: 2px dashed black;"></p>
+                            <b><span>Sign</span></b>
+                        </div>
+
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="cash_report_ticket_paperformat_ticket" model="report.paperformat">
+        <field name="name">Cash Report Ticket</field>
+        <field name="default" eval="True"/>
+        <field name="format">custom</field>
+        <field name="page_height">240</field>
+        <field name="page_width">80</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">3</field>
+        <field name="margin_bottom">0</field>
+        <field name="margin_left">1</field>
+        <field name="margin_right">1</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">1</field>
+        <field name="dpi">150</field>
+    </record>
+
+    <record id="pos_cash_in_out_report_ticket_action" model="ir.actions.report">
+        <field name="name">Cash Report</field>
+        <field name="model">pos.session</field>
+        <field name="report_name">pos_cash_in_out_recipe.pos_cash_in_out_ticket_template</field>
+        <field name="paperformat_id" ref="pos_cash_in_out_recipe.cash_report_ticket_paperformat_ticket"></field>
+    </record>
+   
+    
+</odoo>
